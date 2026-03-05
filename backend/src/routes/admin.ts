@@ -4,6 +4,7 @@ import jwt  from "jsonwebtoken"
 const loginRouter = Router()
 
 loginRouter.post("/login", (req, res)=> {
+    try {
     const password = req.body()
 
     if (password !== process.env.ADMIN_PASSWORD){
@@ -16,7 +17,12 @@ loginRouter.post("/login", (req, res)=> {
        {role : "admin"},
         process.env.ADMIN_PASSWORD!
     )
-    res.status(200).json({token})
+    res.status(200).json({token})} 
+    catch (e){
+        res.status(500).json({
+            message : `Sorry there was an error: ${e} `
+        })
+    }
 })
 
 export default loginRouter
