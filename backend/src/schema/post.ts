@@ -5,7 +5,7 @@ export interface IPost extends Document {
   title:    string
   excerpt:  string
   content:  string
-  category: "Design" | "Engineering" | "Writing" | "Technology"
+  category: "Tech" | "Media" | "Personal" | "Deepshit"
   status:   "published" | "draft"
   author:   string
   date:     string
@@ -31,8 +31,8 @@ const postSchema = new Schema<IPost>(
     content:  { type: String, default: "" },
     category: {
       type: String,
-      enum: ["Design", "Engineering", "Writing", "Technology"],
-      default: "Design",
+      enum: ["Tech", "Media", "Personal", "Deepshit"],
+      default: "Media",
     },
     status:   { type: String, enum: ["published", "draft"], default: "draft" },
     author:   { type: String, default: "Admin" },
